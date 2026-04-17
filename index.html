@@ -153,8 +153,82 @@
         .footer-contact p { color: rgba(240,236,228,0.4); font-size: 13px; margin-bottom: 14px; display: flex; align-items: flex-start; gap: 10px; }
         .footer-bottom { text-align: center; padding-top: 35px; border-top: 1px solid #1a1a1a; color: rgba(240,236,228,0.25); font-size: 12px; letter-spacing: 1px; }
         .footer-bottom span { color: var(--secondary); }
-        @media (max-width: 1024px) { .about { grid-template-columns: 1fr; } .footer-grid { grid-template-columns: repeat(2, 1fr); } .worker-inner { grid-template-columns: 1fr; gap: 60px; } }
-        @media (max-width: 768px) { nav { padding: 18px 24px; } nav.scrolled { padding: 14px 24px; } .nav-links { display: none; } .services-grid { grid-template-columns: 1fr; } .about-features { grid-template-columns: 1fr; } .footer-grid { grid-template-columns: 1fr; } .stats { flex-direction: column; gap: 0; } .stat-item { border-right: none; border-bottom: 1px solid #1e1e1e; padding: 30px 40px; } .stat-item:last-child { border-bottom: none; } .power-statement { padding: 80px 30px; } .about { padding: 80px 24px; gap: 60px; } .about-badge { left: 0; } .services { padding: 80px 24px; } .worker-section { padding: 80px 24px; } .cta { padding: 80px 24px; } footer { padding: 80px 24px 30px; } .ticker-inner { animation-duration: 20s; } }
+        /* HAMBURGER MENU */
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; z-index: 1100; }
+        .hamburger span { display: block; width: 24px; height: 2px; background: var(--light); transition: all 0.3s ease; }
+        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        /* MOBILE NAV DRAWER */
+        .mobile-nav { display: none; position: fixed; inset: 0; background: rgba(5,5,5,0.98); z-index: 1050; flex-direction: column; align-items: center; justify-content: center; gap: 36px; }
+        .mobile-nav.open { display: flex; }
+        .mobile-nav a { color: var(--light); text-decoration: none; font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; letter-spacing: 2px; transition: color 0.3s; }
+        .mobile-nav a:hover, .mobile-nav a.nav-cta { color: var(--secondary); }
+
+        @media (max-width: 1024px) {
+            .about { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+            .worker-inner { grid-template-columns: 1fr; gap: 50px; }
+        }
+
+        @media (max-width: 768px) {
+            nav { padding: 16px 20px; }
+            nav.scrolled { padding: 12px 20px; }
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+
+            .hero { height: 100svh; min-height: 600px; }
+            .hero-title { font-size: clamp(38px, 11vw, 60px); }
+            .hero-subtitle { font-size: 10px; letter-spacing: 6px; }
+            .hero-desc { font-size: 14px; margin-bottom: 36px; }
+            .btn { padding: 16px 32px; font-size: 11px; letter-spacing: 2px; }
+            .scroll-indicator { display: none; }
+
+            .ticker-item { font-size: 11px; padding: 0 30px; }
+            .ticker-inner { animation-duration: 18s; }
+
+            .stats { flex-direction: column; gap: 0; padding: 0; }
+            .stat-item { border-right: none; border-bottom: 1px solid #1e1e1e; padding: 28px 20px; width: 100%; }
+            .stat-item:last-child { border-bottom: none; }
+            .stat-number { font-size: 48px; }
+
+            .power-statement { padding: 70px 24px; }
+            .power-big-text { font-size: clamp(26px, 7vw, 42px); }
+
+            .services { padding: 70px 20px; }
+            .section-header { margin-bottom: 50px; }
+            .services-grid { grid-template-columns: 1fr; gap: 2px; }
+            .service-card { padding: 40px 28px; }
+            .service-card:hover { transform: none; }
+
+            .worker-section { padding: 70px 20px; }
+            .worker-inner { gap: 40px; }
+            .worker-video { max-height: 480px; }
+            .worker-video-wrap::before, .worker-video-wrap::after { display: none; }
+
+            .about { padding: 70px 20px; gap: 50px; max-width: 100%; }
+            .about-image { height: 320px; }
+            .about-image::before, .about-image::after { display: none; }
+            .about-badge { left: 0; bottom: -20px; padding: 18px 22px; }
+            .about-badge-num { font-size: 30px; }
+            .about-content { padding-right: 0; }
+            .about-features { grid-template-columns: 1fr 1fr; gap: 12px; }
+
+            .cta { padding: 70px 20px; }
+            .cta-title { font-size: clamp(28px, 8vw, 44px); }
+
+            footer { padding: 60px 20px 28px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+            .footer-about p { max-width: 100%; }
+        }
+
+        @media (max-width: 400px) {
+            .hero-title { font-size: 34px; }
+            .about-features { grid-template-columns: 1fr; }
+            .btn { padding: 14px 24px; width: 100%; text-align: center; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+        }
     </style>
 </head>
 <body>
@@ -166,11 +240,20 @@
             <li><a href="#about">Despre</a></li>
             <li><a href="#contact" class="nav-cta">Contact</a></li>
         </ul>
+        <div class="hamburger" id="hamburger" aria-label="Meniu" role="button" tabindex="0">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+    <nav class="mobile-nav" id="mobileNav">
+        <a href="#home" class="mobile-link">Acasă</a>
+        <a href="#services" class="mobile-link">Servicii</a>
+        <a href="#about" class="mobile-link">Despre</a>
+        <a href="#contact" class="mobile-link nav-cta">Contact</a>
     </nav>
     <section class="hero" id="home">
         <div class="hero-bg">
             <div class="hero-video-fallback"></div>
-            <video class="hero-video" autoplay muted loop playsinline>
+            <video class="hero-video" autoplay muted loop playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5">
                 <source src="WhatsApp Video 2026-04-11 at 04.09.25.mp4" type="video/mp4">
             </video>
             <div class="hero-bg-overlay"></div>
@@ -181,7 +264,7 @@
             <h1 class="hero-title">
                 <em>Construim cu</em>
                 <span>Putere.</span>
-                <span class="hero-title-main"></span>Viziune.</span>
+                <span class="hero-title-main">Viziune.</span>
             </h1>
             <p class="hero-desc">Suntem lideri în construcții civile și industriale — oferind soluții inovatoare, execuție impecabilă și rezultate care rezistă generațiilor.</p>
             <div class="hero-buttons">
@@ -259,7 +342,7 @@
                 </div>
             </div>
             <div class="worker-video-wrap">
-                <video class="worker-video" autoplay muted loop playsinline>
+                <video class="worker-video" autoplay muted loop playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5">
                     <source src="ssstik.io_1776388510557.mp4" type="video/mp4">
                 </video>
                 <div class="worker-video-label">ADY Constructions — Echipa în Acțiune</div>
@@ -339,6 +422,22 @@
     <script>
         // Navbar scroll
         window.addEventListener('scroll', () => document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 80));
+
+        // Hamburger menu
+        const hamburger = document.getElementById('hamburger');
+        const mobileNav = document.getElementById('mobileNav');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('open');
+            mobileNav.classList.toggle('open');
+            document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+        });
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('open');
+                mobileNav.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        });
         
         // Stat counter animation
         const animateNumbers = () => {
@@ -382,6 +481,11 @@
             fadeObserver.observe(el);
         });
         
+        // Force autoplay on mobile
+        document.querySelectorAll('video').forEach(v => {
+            v.play().catch(() => {});
+        });
+
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
             e.preventDefault();
