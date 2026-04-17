@@ -49,7 +49,6 @@
         .scroll-line { width: 1px; height: 70px; background: linear-gradient(to bottom, var(--secondary), transparent); animation: scrollPulse 2s ease infinite; }
         @keyframes scrollPulse { 0%, 100% { transform: scaleY(1); opacity: 1; } 50% { transform: scaleY(0.5); opacity: 0.4; } }
 
-        /* HERO ENTRANCE ANIMATIONS */
         @keyframes fadeUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes slideInLeft { from { opacity: 0; transform: translateX(-60px); } to { opacity: 1; transform: translateX(0); } }
@@ -67,14 +66,12 @@
         .hero-buttons { animation: fadeUp 0.9s ease 1.35s both; }
         .scroll-indicator { animation: fadeIn 1s ease 2s both; }
 
-        /* TICKER */
         .ticker { background: var(--secondary); padding: 14px 0; overflow: hidden; white-space: nowrap; }
         .ticker-inner { display: inline-flex; animation: tickerScroll 30s linear infinite; }
         .ticker-item { font-size: 12px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--dark); padding: 0 50px; display: flex; align-items: center; gap: 20px; }
         .ticker-item::after { content: '◆'; font-size: 8px; color: rgba(0,0,0,0.4); }
         @keyframes tickerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-        /* POWER STATEMENT */
         .power-statement { padding: 120px 60px; background: var(--dark); position: relative; overflow: hidden; text-align: center; }
         .power-statement::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(201,162,39,0.07) 0%, transparent 70%); pointer-events: none; }
         .power-big-text { font-family: 'Playfair Display', serif; font-size: clamp(36px, 6vw, 72px); font-weight: 900; line-height: 1.25; max-width: 1000px; margin: 0 auto; }
@@ -119,7 +116,6 @@
         .about-feature { display: flex; align-items: center; gap: 14px; }
         .about-feature-icon { width: 44px; height: 44px; border: 1px solid rgba(201,162,39,0.5); display: flex; align-items: center; justify-content: center; font-size: 16px; color: var(--secondary); flex-shrink: 0; }
         .about-feature span { font-weight: 500; font-size: 14px; letter-spacing: 0.5px; }
-        /* WORKER SECTION */
         .worker-section { background: var(--dark); padding: 130px 60px; }
         .worker-inner { max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
         .worker-desc { font-size: 15px; line-height: 2; color: rgba(240,236,228,0.55); margin-bottom: 36px; }
@@ -153,14 +149,12 @@
         .footer-contact p { color: rgba(240,236,228,0.4); font-size: 13px; margin-bottom: 14px; display: flex; align-items: flex-start; gap: 10px; }
         .footer-bottom { text-align: center; padding-top: 35px; border-top: 1px solid #1a1a1a; color: rgba(240,236,228,0.25); font-size: 12px; letter-spacing: 1px; }
         .footer-bottom span { color: var(--secondary); }
-        /* HAMBURGER MENU */
         .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; z-index: 1100; }
         .hamburger span { display: block; width: 24px; height: 2px; background: var(--light); transition: all 0.3s ease; }
         .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
         .hamburger.open span:nth-child(2) { opacity: 0; }
         .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-        /* MOBILE NAV DRAWER */
         .mobile-nav { display: none; position: fixed; inset: 0; background: rgba(5,5,5,0.98); z-index: 1050; flex-direction: column; align-items: center; justify-content: center; gap: 36px; }
         .mobile-nav.open { display: flex; }
         .mobile-nav a { color: var(--light); text-decoration: none; font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; letter-spacing: 2px; transition: color 0.3s; }
@@ -253,7 +247,7 @@
     <section class="hero" id="home">
         <div class="hero-bg">
             <div class="hero-video-fallback"></div>
-            <video class="hero-video" autoplay muted loop playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5">
+            <video class="hero-video" autoplay muted loop playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5" preload="auto">
                 <source src="WhatsApp Video 2026-04-11 at 04.09.25.mp4" type="video/mp4">
             </video>
             <div class="hero-bg-overlay"></div>
@@ -277,7 +271,6 @@
             <div class="scroll-line"></div>
         </div>
     </section>
-    <!-- TICKER -->
     <div class="ticker">
         <div class="ticker-inner">
             <span class="ticker-item">Construcții Civile</span>
@@ -328,7 +321,6 @@
             <div class="service-card"><span class="service-number">05</span><span class="service-icon">🛡️</span><h3 class="service-title">Infrastructură</h3><p class="service-desc">Drumuri, poduri și rețele de utilități publice, executate cu materiale de calitate.</p><a href="#" class="service-link">Află mai mult</a></div>
         </div>
     </section>
-    <!-- WORKER VIDEO SECTION -->
     <section class="worker-section">
         <div class="worker-inner">
             <div class="worker-text">
@@ -342,7 +334,7 @@
                 </div>
             </div>
             <div class="worker-video-wrap">
-                <video class="worker-video" autoplay muted loop playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5">
+                <video class="worker-video" autoplay muted loop playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5" preload="auto">
                     <source src="ssstik.io_1776388510557.mp4" type="video/mp4">
                 </video>
                 <div class="worker-video-label">ADY Constructions — Echipa în Acțiune</div>
@@ -420,10 +412,8 @@
         </div>
     </footer>
     <script>
-        // Navbar scroll
         window.addEventListener('scroll', () => document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 80));
 
-        // Hamburger menu
         const hamburger = document.getElementById('hamburger');
         const mobileNav = document.getElementById('mobileNav');
         hamburger.addEventListener('click', () => {
@@ -439,7 +429,6 @@
             });
         });
         
-        // Stat counter animation
         const animateNumbers = () => {
             document.querySelectorAll('.stat-number').forEach(stat => {
                 const target = +stat.dataset.target;
@@ -463,7 +452,6 @@
         }, { threshold: 0.3 });
         statsObserver.observe(document.querySelector('.stats'));
 
-        // Fade-in on scroll
         const fadeEls = document.querySelectorAll('.service-card, .about-content, .about-image, .stat-item, .power-big-text, .cta-title, .cta-desc, .worker-text, .worker-video-wrap');
         const fadeObserver = new IntersectionObserver(entries => {
             entries.forEach((entry, i) => {
@@ -481,12 +469,27 @@
             fadeObserver.observe(el);
         });
         
-        // Force autoplay on mobile
-        document.querySelectorAll('video').forEach(v => {
-            v.play().catch(() => {});
+        const videos = document.querySelectorAll('video');
+        videos.forEach(v => {
+            v.muted = true;
+            v.setAttribute('muted', '');
+            v.setAttribute('playsinline', '');
+            v.setAttribute('webkit-playsinline', '');
+            const tryPlay = () => v.play().catch(() => {});
+            tryPlay();
+            const vo = new IntersectionObserver(entries => {
+                entries.forEach(e => { if (e.isIntersecting) { v.play().catch(() => {}); } });
+            }, { threshold: 0.1 });
+            vo.observe(v);
         });
+        const unlockVideos = () => {
+            videos.forEach(v => v.play().catch(() => {}));
+            document.removeEventListener('touchstart', unlockVideos);
+            document.removeEventListener('click', unlockVideos);
+        };
+        document.addEventListener('touchstart', unlockVideos, { once: true });
+        document.addEventListener('click', unlockVideos, { once: true });
 
-        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
             e.preventDefault();
             const target = document.querySelector(a.getAttribute('href'));
